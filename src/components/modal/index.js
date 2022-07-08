@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import Form from '../form';
+import { Container } from './styles';
 
 const style = {
   position: 'absolute',
@@ -11,10 +12,14 @@ const style = {
   transform: 'translate(-50%, -50%)',
   width: "auto",
   height: "auto",
-  bgcolor: 'background.paper',
+  bgcolor: 'lightblue',
   border: '2px solid #000',
   boxShadow: 24,
   borderRadius: "10px",
+  minWidth: "200px",
+  display: "flex",
+  justifyContent:"center",
+  alignItems:"center",
   p: 4,
 };
 
@@ -27,6 +32,7 @@ export default function BasicModal() {
     <div>
       <Button variant="contained" onClick={handleOpen}>Open modal</Button>
       <Modal
+      
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"

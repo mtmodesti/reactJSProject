@@ -40,6 +40,7 @@ export const PasswordInput = ({placeholder}) => {
     return (
 
 <OutlinedInput
+            fullWidth={true}
             id="outlined-adornment-password"
             type={values.showPassword ? 'text' : 'password'}
             value={values.password}
