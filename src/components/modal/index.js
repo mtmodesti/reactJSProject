@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import Form from '../form';
-import { Container } from './styles';
+import { useForm } from "react-hook-form";
 
 const style = {
   position: 'absolute',
@@ -23,7 +23,7 @@ const style = {
   p: 4,
 };
 
-export default function BasicModal() {
+export default function RegisterModalForm() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -41,8 +41,6 @@ export default function BasicModal() {
         <Box sx={style}>
          
         <Form/>
-
-
 
         </Box>
       </Modal>

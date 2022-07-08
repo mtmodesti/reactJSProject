@@ -2,31 +2,47 @@ import { Container } from "./styles"
 import { PasswordInput } from "../passInput";
 import { TextField } from "@mui/material";
 import {Button} from "@mui/material"
+import React from "react";
+import { useForm } from "react-hook-form";
+
 
 
 
 const Form = () => {
+  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const onSubmit = data => console.log(data);
+
+  console.log(watch("example"));
 
     return (
-        <Container>  
+        <Container onSubmit={handleSubmit(onSubmit)}>  
 
           <h3>Insert your infos</h3>
 
-          <TextField fullWidth placeholder={"Name"}/>
+          <TextField 
+          {...register("name")}
+          fullWidth placeholder={"Name"}/>
 
-          <TextField fullWidth id="fullWidth" placeholder={"E-mail"}/>
+          <TextField 
+          {...register("email")}
+          fullWidth  
+          placeholder={"E-mail"}/>
 
-          <PasswordInput placeholder={"Password"} />
+          <PasswordInput 
+          refs={register("password")}
+          placeholder={"Password"} />
 
-          <PasswordInput placeholder={"Confirm Password"}/>
+          <PasswordInput 
+          refs={register("confPassword")}
+          placeholder={"Confirm Password"}/>
 
           <Button 
-          onClick={() => {console.log('oi')}}
-          variant="contained">Confirm</Button>
+          type="submit"
+          variant="contained">Confirm</Button> 
 
         </Container>
     )
-}
+} 
 
 export default Form
 

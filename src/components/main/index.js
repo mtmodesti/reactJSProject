@@ -1,10 +1,10 @@
-import BasicModal from "../modal"
+import RegisterModalForm from "../modal"
 import { Container } from "./style"
 
 const Main = () => {
     return (
         <Container>
-            <BasicModal />
+            <RegisterModalForm />
         </Container>
     )
 }

@@ -41,7 +41,6 @@ export const PasswordInput = ({placeholder}) => {
 
 <OutlinedInput
             fullWidth={true}
-            id="outlined-adornment-password"
             type={values.showPassword ? 'text' : 'password'}
             value={values.password}
             onChange={handleChange('password')}
