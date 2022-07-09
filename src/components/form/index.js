@@ -1,5 +1,4 @@
 import { Container } from "./styles"
-import { PasswordInput } from "../passInput";
 import { TextField } from "@mui/material";
 import {Button} from "@mui/material"
 import React from "react";
@@ -7,27 +6,26 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-
-
-
 const formSchema = yup.object().shape({
-  name: yup.string(), //.required('Name required').max('Max length 50').matches("^[ a-zA-Z áãàâ]*$", "Only letters"),
-  email: yup.string(), //.required("required e-mail").email("invalid e-mail"),
-  password:yup.string(), //.required("required password").min(6, "6 caracters minimum"),
+  name: yup.string().required('Name required').matches('^[ a-zA-Z á]*$','Only letters'),
+  email: yup.string().required("E-mail required").email("invalid e-mail"),
+  password:yup.string().required("Password required").min(6, "6 caracters minimum").matches('^(?=.*[A-Z])(?=.*[!#@$%&])(?=.*[0-9])(?=.*[a-z]).{8,15}$','Senha fraca'),
   confPassword:yup
-  .string()  //.required("confirmation required").min(6, "minimum 6 caracters").oneOf([yup.ref("password")], "passwords must match"),
+  .string().required("Confirmation required").min(6, "minimum 6 caracters").oneOf([yup.ref('password'), null],'Password must match'),
 })
-
 
 
 const Form = () => {
   const { register, handleSubmit, formState: { errors } } = useForm(
      {resolver: yupResolver(formSchema)},
   );
-  const onSubmit = data => {
-    console.log(data)
-    //console.log(errors)
-
+  const onSubmit =  (data) =>  {
+    const formData = {
+      name: data.name,
+      email: data.email,
+      password: data.password,
+      confPassword: data.confPassword
+    }
   };
 
     return (
@@ -35,29 +33,45 @@ const Form = () => {
 
           <h3>Insert your infos</h3>
 
+       
           <TextField 
-          //error={!!errors.name ? console.log('erro') : console.log('ok')}
-          {...register("name")}
-          fullWidth placeholder={"Name"}/>
-
+          label='name'
+          name="name"
+          helperText={errors.name?.message} {...register('name')}
+          error={!!errors.name?.message}
+          {...register('name')}
+          placeholder={"Name"}/>
+          
+ 
           <TextField 
-      //    error={!!errors.email?.message}
+          label='email'
+          name="email"
+          helperText={errors.email?.message} {...register('email')}
+          error={!!errors.email?.message}
           {...register("email")}
-          fullWidth  
           placeholder={"E-mail"}/>
 
-          <PasswordInput
-          //error={!!errors.password?.message}
-          refs={register("password")}
-          placeholder={"Password"} />
 
-          <PasswordInput 
-          //error={!!errors.password?.message}
-          refs={register("confPassword")}
+        <TextField 
+          label='password'
+          name="password"
+          helperText={errors.password?.message} {...register('password')}
+          error={!!errors.password?.message}
+          {...register("password")}
+          placeholder={"Password"}/>
+
+<TextField 
+          label='Confirm password'
+          name="confPassword"
+          helperText={errors.confPassword?.message} {...register('confPassword')}
+          error={!!errors.confPassword?.message}
+          {...register("confPassword")}
           placeholder={"Confirm Password"}/>
 
           <Button 
-          type="submit"
+         
+          type='submit'
+          
 
           variant="contained">Confirm</Button> 
 
