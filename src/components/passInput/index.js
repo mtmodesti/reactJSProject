@@ -8,7 +8,7 @@ import * as React from 'react';
 
 
 
-export const PasswordInput = ({placeholder}) => {
+export const PasswordInput = ({placeholder, error}) => {
 
 
  const [values, setValues] = React.useState({
@@ -40,6 +40,7 @@ export const PasswordInput = ({placeholder}) => {
     return (
 
 <OutlinedInput
+            error={error}
             fullWidth={true}
             type={values.showPassword ? 'text' : 'password'}
             value={values.password}
