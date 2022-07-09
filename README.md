@@ -6,7 +6,7 @@ ex:
 
 
 const input = ({..., register, name,  ...rest}) => {
-<TextField
+< TextField
         
           {...register(name)} 
           
