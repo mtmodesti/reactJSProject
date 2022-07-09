@@ -1,23 +1,21 @@
 import {  Route, Routes } from 'react-router-dom'
-import App from '../App'
+
 import Dashboard from '../pages/dashboard'
+import Main from '../components/main'
 
-const Router = () => {
+const RoutesApp = () => {
     return (
+        <div>
 
-        <Routes>
+         <Routes>
 
-            <Route exact path='/'>
-                <App />
-            </Route>
-
-            <Route path='/dashboard'>
-                <Dashboard />
-            </Route>
-
-        </Routes>
+            <Route path='/'  element={ <Main /> }> </Route>
+            <Route path='/dashboard'  element={ <Dashboard /> } > </Route>
+  
+         </Routes>
+    </div>
 
     )
 }
 
-export default Router
+export default RoutesApp

@@ -5,6 +5,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useNavigate } from 'react-router-dom';
 
 
 const formSchema = yup.object().shape({
@@ -22,7 +23,7 @@ const Form = () => {
      {resolver: yupResolver(formSchema)},
   );
 
-//const history = useHistory()  
+  const navigate = useNavigate();
 
 
   const onSubmit =  (data) =>  {
@@ -32,7 +33,7 @@ const Form = () => {
       password: data.password,
       confPassword: data.confPassword
     }
-   // history.push(`www.google.com`)  
+    navigate('/dashboard')
     console.log(data)
   };
 
