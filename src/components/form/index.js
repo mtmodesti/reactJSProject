@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
+
 const formSchema = yup.object().shape({
   name: yup.string().required('Name required').matches('^[ a-zA-Z á]*$','Only letters'),
   email: yup.string().required("E-mail required").email("invalid e-mail"),
@@ -15,10 +16,15 @@ const formSchema = yup.object().shape({
 })
 
 
+
 const Form = () => {
   const { register, handleSubmit, formState: { errors } } = useForm(
      {resolver: yupResolver(formSchema)},
   );
+
+//const history = useHistory()  
+
+
   const onSubmit =  (data) =>  {
     const formData = {
       name: data.name,
@@ -26,6 +32,8 @@ const Form = () => {
       password: data.password,
       confPassword: data.confPassword
     }
+   // history.push(`www.google.com`)  
+    console.log(data)
   };
 
     return (
@@ -69,10 +77,7 @@ const Form = () => {
           placeholder={"Confirm Password"}/>
 
           <Button 
-         
           type='submit'
-          
-
           variant="contained">Confirm</Button> 
 
         </Container>
