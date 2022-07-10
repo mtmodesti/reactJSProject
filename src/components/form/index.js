@@ -1,12 +1,16 @@
 import { Container } from "./styles";
-import { TextField } from "@mui/material";
+import { TextField, InputAdornment, IconButton } from "@mui/material";
 import { Button } from "@mui/material";
 import React from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
+import { useState } from "react";
+import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
+import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
+import AccountCircle from "@mui/icons-material/AccountCircle";
+import EmailIcon from "@mui/icons-material/Email";
 
 const formSchema = yup.object().shape({
   name: yup
@@ -49,6 +53,24 @@ const Form = ({ closeModalFunction }) => {
     console.log(data);
   };
 
+  const [values, setValues] = React.useState({
+    amount: "",
+    password: "",
+    weight: "",
+    weightRange: "",
+    showPassword: false,
+  });
+
+  const [showPassword, setShowPassword] = useState(false);
+  const handleClickShowPassword = () => setShowPassword(!showPassword);
+  const handleMouseDownPassword = () => setShowPassword(!showPassword);
+
+  const [showConfPassowrd, setshowConfPassowrd] = useState(false);
+  const handleClickShowConfPassword = () =>
+    setshowConfPassowrd(!showConfPassowrd);
+  const handleMouseDownConfPassword = () =>
+    setshowConfPassowrd(!showConfPassowrd);
+
   return (
     <Container onSubmit={handleSubmit(onSubmit)}>
       <header>
@@ -57,6 +79,14 @@ const Form = ({ closeModalFunction }) => {
       </header>
 
       <TextField
+        fullWidth
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <AccountCircle />
+            </InputAdornment>
+          ),
+        }}
         label="name"
         name="name"
         helperText={errors.name?.message}
@@ -67,6 +97,14 @@ const Form = ({ closeModalFunction }) => {
       />
 
       <TextField
+        fullWidth
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <EmailIcon />
+            </InputAdornment>
+          ),
+        }}
         label="email"
         name="email"
         helperText={errors.email?.message}
@@ -77,23 +115,58 @@ const Form = ({ closeModalFunction }) => {
       />
 
       <TextField
+        fullWidth
         label="password"
         name="password"
         helperText={errors.password?.message}
-        {...register("password")}
         error={!!errors.password?.message}
         {...register("password")}
         placeholder={"Password"}
+        type={showPassword ? "text" : "password"}
+        InputProps={{
+          endAdornment: (
+            <InputAdornment position="end">
+              <IconButton
+                aria-label="toggle password visibility"
+                onClick={handleClickShowPassword}
+                onMouseDown={handleMouseDownPassword}
+              >
+                {showPassword ? (
+                  <VisibilityOffOutlinedIcon />
+                ) : (
+                  <RemoveRedEyeOutlinedIcon />
+                )}
+              </IconButton>
+            </InputAdornment>
+          ),
+        }}
       />
-
       <TextField
+        fullWidth
         label="Confirm password"
         name="confPassword"
         helperText={errors.confPassword?.message}
-        {...register("confPassword")}
         error={!!errors.confPassword?.message}
         {...register("confPassword")}
         placeholder={"Confirm Password"}
+        type={showConfPassowrd ? "text" : "password"}
+        InputProps={{
+          endAdornment: (
+            <InputAdornment position="end">
+              <IconButton
+                aria-label="toggle password visibility"
+                onClick={handleClickShowConfPassword}
+                onMouseDown={handleMouseDownConfPassword}
+              >
+                {showConfPassowrd ? (
+                  <VisibilityOffOutlinedIcon />
+                ) : (
+                  <RemoveRedEyeOutlinedIcon />
+                )}
+              </IconButton>
+            </InputAdornment>
+          ),
+        }}
       />
 
       <Button type="submit" variant="contained">
