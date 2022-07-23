@@ -1,0 +1,45 @@
+.trabalheConosco {
+  width: 90%;
+  height: 60%;
+  background-size: cover;
+  border-radius: 20px;
+  color: #fff;
+  display: flex;
+  text-shadow: 2px 2px 5px green;
+  align-items: center;
+  justify-content: center;
+  background-repeat: no-repeat;
+  background-image: url("../../assets/images/instrucoes.png");
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.n1 {
+  background: url("../../assets/images/painel-blue.png");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+}
+
+.n2 {
+  background: url("../../assets/images/02 __ CONHEÇA MELHOR.png");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+
+}
+
+.n3 {
+  background: url("../../assets/images/banner-algoritmos.png");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+}
