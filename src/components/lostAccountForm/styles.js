@@ -23,7 +23,6 @@ export const Container = styled.form`
 
   header {
     display: flex;
-    width: 100%;
     justify-content: space-between;
     align-items: center;
   }
@@ -49,5 +48,4 @@ export const Container = styled.form`
 export const DivBtn = styled.div`
 display: flex;
 gap: 10px;
-flex-direction: column;
 `

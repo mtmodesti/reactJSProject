@@ -24,7 +24,7 @@ const formSchema = yup.object().shape({
     ),
 });
 
-const Form = () => {
+const Form = ({ lostAccount,setLostAccount }) => {
   const {
     register,
     handleSubmit,
@@ -33,10 +33,16 @@ const Form = () => {
 
   const registerNavigate = () => {
     navigate("/register");
+  };
 
-  }
+
 
   const navigate = useNavigate();
+
+  const handleLostEmail = () => {
+    setLostAccount(true)
+    console.log(lostAccount)
+  }
 
   const onSubmit = (data) => {
     const formData = {
@@ -72,7 +78,6 @@ const Form = () => {
             </InputAdornment>
           ),
         }}
-        
         color="success"
         name="email"
         helperText={errors.email?.message}
@@ -90,7 +95,6 @@ const Form = () => {
         error={!!errors.password?.message}
         {...register("password")}
         placeholder={"Password"}
-        
         type={showPassword ? "text" : "password"}
         InputProps={{
           endAdornment: (
@@ -114,15 +118,18 @@ const Form = () => {
       <Button type="submit" variant="contained">
         Login
       </Button>
-<DivBtn>
-
-      <Button 
-      onClick={registerNavigate}
-      variant="contained">
-        Registre-se
-      </Button>
-</DivBtn>
-
+      <DivBtn>
+        <Button 
+        
+        onClick={registerNavigate} variant="contained">
+          Registre-se
+        </Button>
+        <Button
+         onClick={handleLostEmail}
+        >
+          Esqueceu a senha?
+        </Button>
+      </DivBtn>
     </Container>
   );
 };
