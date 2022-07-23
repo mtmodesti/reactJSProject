@@ -1,6 +1,6 @@
 import {  Route, Routes } from 'react-router-dom'
 
-import Dashboard from '../pages/dashboard'
+import Dashboard from '../pages/register'
 import Main from '../components/main'
 
 const RoutesApp = () => {
@@ -10,7 +10,7 @@ const RoutesApp = () => {
          <Routes>
 
             <Route path='/'  element={ <Main /> }> </Route>
-            <Route path='/dashboard'  element={ <Dashboard /> } > </Route>
+            <Route path='/register'  element={ <Dashboard /> } > </Route>
   
          </Routes>
     </div>

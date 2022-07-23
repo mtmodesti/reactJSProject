@@ -1,4 +1,4 @@
-import { Container } from "./styles";
+import { Container, DivBtn } from "./styles";
 import { TextField, InputAdornment, IconButton } from "@mui/material";
 import { Button } from "@mui/material";
 import React from "react";
@@ -13,10 +13,6 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import EmailIcon from "@mui/icons-material/Email";
 
 const formSchema = yup.object().shape({
-  name: yup
-    .string()
-    .required("Name required")
-    .matches("^[ a-zA-Z á]*$", "Only letters"),
   email: yup.string().required("E-mail required").email("invalid e-mail"),
   password: yup
     .string()
@@ -24,42 +20,32 @@ const formSchema = yup.object().shape({
     .min(6, "6 caracters minimum")
     .matches(
       "^(?=.*[A-Z])(?=.*[!#@$%&])(?=.*[0-9])(?=.*[a-z]).{8,15}$",
-      "Senha fraca"
+      "Weak password"
     ),
-  confPassword: yup
-    .string()
-    .required("Confirmation required")
-    .min(6, "minimum 6 caracters")
-    .oneOf([yup.ref("password"), null], "Password must match"),
 });
 
-const Form = ({ closeModalFunction }) => {
+const Form = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: yupResolver(formSchema) });
 
+  const registerNavigate = () => {
+    navigate("/register");
+
+  }
+
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
     const formData = {
-      name: data.name,
       email: data.email,
       password: data.password,
-      confPassword: data.confPassword,
     };
-    navigate("/dashboard");
+    //navigate("/dashboard");
     console.log(data);
   };
-
-  const [values, setValues] = React.useState({
-    amount: "",
-    password: "",
-    weight: "",
-    weightRange: "",
-    showPassword: false,
-  });
 
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => setShowPassword(!showPassword);
@@ -74,27 +60,8 @@ const Form = ({ closeModalFunction }) => {
   return (
     <Container onSubmit={handleSubmit(onSubmit)}>
       <header>
-        <h3>Insert your infos</h3>
-        <span onClick={closeModalFunction}>X</span>
+        <h3>Preencha seus dados e acesse sua conta</h3>
       </header>
-
-      <TextField
-        fullWidth
-        InputProps={{
-          startAdornment: (
-            <InputAdornment position="start">
-              <AccountCircle />
-            </InputAdornment>
-          ),
-        }}
-        label="name"
-        name="name"
-        helperText={errors.name?.message}
-        {...register("name")}
-        error={!!errors.name?.message}
-        {...register("name")}
-        placeholder={"Name"}
-      />
 
       <TextField
         fullWidth
@@ -105,7 +72,8 @@ const Form = ({ closeModalFunction }) => {
             </InputAdornment>
           ),
         }}
-        label="email"
+        
+        color="success"
         name="email"
         helperText={errors.email?.message}
         {...register("email")}
@@ -115,17 +83,18 @@ const Form = ({ closeModalFunction }) => {
       />
 
       <TextField
+        color="success"
         fullWidth
-        label="password"
-        name="password"
+        label="Password"
         helperText={errors.password?.message}
         error={!!errors.password?.message}
         {...register("password")}
         placeholder={"Password"}
+        
         type={showPassword ? "text" : "password"}
         InputProps={{
           endAdornment: (
-            <InputAdornment position="end">
+            <InputAdornment position="start">
               <IconButton
                 aria-label="toggle password visibility"
                 onClick={handleClickShowPassword}
@@ -141,37 +110,19 @@ const Form = ({ closeModalFunction }) => {
           ),
         }}
       />
-      <TextField
-        fullWidth
-        label="Confirm password"
-        name="confPassword"
-        helperText={errors.confPassword?.message}
-        error={!!errors.confPassword?.message}
-        {...register("confPassword")}
-        placeholder={"Confirm Password"}
-        type={showConfPassowrd ? "text" : "password"}
-        InputProps={{
-          endAdornment: (
-            <InputAdornment position="end">
-              <IconButton
-                aria-label="toggle password visibility"
-                onClick={handleClickShowConfPassword}
-                onMouseDown={handleMouseDownConfPassword}
-              >
-                {showConfPassowrd ? (
-                  <VisibilityOffOutlinedIcon />
-                ) : (
-                  <RemoveRedEyeOutlinedIcon />
-                )}
-              </IconButton>
-            </InputAdornment>
-          ),
-        }}
-      />
 
       <Button type="submit" variant="contained">
-        Confirm
+        Login
       </Button>
+<DivBtn>
+
+      <Button 
+      onClick={registerNavigate}
+      variant="contained">
+        Registre-se
+      </Button>
+</DivBtn>
+
     </Container>
   );
 };
