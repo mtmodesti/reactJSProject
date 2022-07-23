@@ -2,19 +2,24 @@ import styled from "styled-components";
 
 export const Container = styled.form`
   height: auto;
-  width: 80%;
+  max-width: 80%;
+  min-width: 290px;
+  flex-wrap: wrap;
   background-color: transparent;
   border-radius: 8px;
   padding: 10px;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
-  flex-direction: column;
+  flex-direction: row;
   gap: 15px;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: #005346;
+  margin-bottom: 15px;
+  box-shadow: inset 0 0 1em #00543d, 0 0 1em #000;
 
   @media screen and (max-width: 768px) {
-    background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+flex-direction: column;
   }
 
   h3 {

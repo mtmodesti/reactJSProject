@@ -24,7 +24,6 @@ const Main = () => {
       <FormMenu>
         <h1>Panzer</h1>
 
-
         <Form />
       </FormMenu>
       <ImagemBg></ImagemBg>

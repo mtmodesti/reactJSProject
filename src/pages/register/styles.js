@@ -1,19 +1,19 @@
 import styled from "styled-components";
-import mainPic from '../../assets/images/registerPic.png'
-
+import mainPic from "../../assets/images/registerPic.png";
 
 export const Container = styled.div`
-  background-color: #fff;
+  background-color: #006936;
   display: flex;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+
 `;
 export const Header = styled.header`
   width: 100%;
-  height: 70px;
+  height: 50px;
   background: #020d3f;
   display: flex;
   justify-content: center;
@@ -28,7 +28,7 @@ export const Header = styled.header`
 
 export const SecondHeader = styled.header`
   width: 100%;
-  height: 50px;
+  height: 40px;
   background: #7fffd4;
   display: flex;
   justify-content: center;
@@ -37,16 +37,30 @@ export const SecondHeader = styled.header`
 `;
 
 export const MainPic = styled.img`
-background-image: url(${props => props.src ? mainPic : null});
-width: 95%;
-height: auto;
-border-radius: 15px;
-margin-top: 10px;
-box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  background-image: url(${(props) => (props.src ? mainPic : null)});
+  width: 95%;
+  max-width: 700px;
+  height: 30%;
+  border-radius: 15px;
+  margin-top: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
-@media screen and (max-width: 768px){
+  @media screen and (max-width: 768px) {
     display: none;
-    
-}
+  }
+`;
 
+export const Span = styled.span`
+justify-content: flex-start;
+align-items: center;
+width: 100%;
+display: flex;
+margin-top: 15px;
+float: left;
+margin-left: 25px;
+margin-bottom: 20px;
+
+span {
+  cursor: pointer;
+}
 `

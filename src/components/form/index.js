@@ -13,7 +13,7 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import EmailIcon from "@mui/icons-material/Email";
 
 const formSchema = yup.object().shape({
-  email: yup.string().required("E-mail required").email("invalid e-mail"),
+  email: yup.string().required("E-mail required").email("email inválido"),
   password: yup
     .string()
     .required("Password required")
