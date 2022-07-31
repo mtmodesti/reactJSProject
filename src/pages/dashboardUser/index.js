@@ -36,32 +36,50 @@ export const DashboardUser = () => {
           <img src={logo}></img>
         </LogoImg>
         <DivIcons>
-          <a href="https://panzers.com.br/produtos/" target={"_blank"}>
+          <a
+            title="Produtos Panzer"
+            href="https://panzers.com.br/produtos/"
+            target={"_blank"}
+          >
             <ProductionQuantityLimitsIcon
               style={{ color: "white", cursor: "pointer" }}
             />
           </a>
-          <a href="https://panzers.com.br/start/" target={"_blank"}>
+          <a
+            title="Aprenda a utilizar"
+            href="https://panzers.com.br/start/"
+            target={"_blank"}
+          >
             <KeyboardArrowRightIcon
               style={{ color: "white", cursor: "pointer" }}
             />
           </a>
           <a
+            title="Nosso Whatsapp"
             href="https://api.whatsapp.com/send?phone=5531997616207&text=Ol%C3%A1!%20Sou%20cliente%20Panzer%20e%20preciso%20de%20ajuda"
             target={"_blank"}
           >
             <WhatsAppIcon style={{ color: "white", cursor: "pointer" }} />
           </a>
-          <a href="https://www.bet365.com/#/HO/" target={"_blank"}>
+          <a
+            title="Bet 365"
+            href="https://www.bet365.com/#/HO/"
+            target={"_blank"}
+          >
             <LanguageIcon style={{ color: "white", cursor: "pointer" }} />
           </a>
         </DivIcons>
+
         <Div onClick={mainNavigate}>
-          <PowerSettingsNewIcon style={{ cursor: "pointer" }} />
+          <span
+          title="Logout"
+          >
+            <PowerSettingsNewIcon style={{ cursor: "pointer" }} />
+          </span>
         </Div>
       </AsideMenu>
       <Main>
-        <header>Bem vindo User</header>
+        <header>Bem vindo {user.name}</header>
         <div>
           <div>
             <span className="trabalheConosco" src={trabalheConosco}>
@@ -76,73 +94,7 @@ export const DashboardUser = () => {
             </div>
           </div>
         </div>
-        <button
-          onClick={() => {
-            console.log(user);
-          }}
-        >
-          teste
-        </button>
       </Main>
     </Container>
   );
 };
-
-/* 
-
-(
-    <Container>
-    <AsideMenu>
-      <LogoImg>
-        <img src={logo}></img>
-      </LogoImg>
-      <DivIcons>
-        <a href="https://panzers.com.br/produtos/" target={"_blank"}>
-          <ProductionQuantityLimitsIcon
-            style={{ color: "white", cursor: "pointer" }}
-          />
-        </a>
-        <a href="https://panzers.com.br/start/" target={"_blank"}>
-          <KeyboardArrowRightIcon
-            style={{ color: "white", cursor: "pointer" }}
-          />
-        </a>
-        <a
-          href="https://api.whatsapp.com/send?phone=5531997616207&text=Ol%C3%A1!%20Sou%20cliente%20Panzer%20e%20preciso%20de%20ajuda"
-          target={"_blank"}
-        >
-          <WhatsAppIcon style={{ color: "white", cursor: "pointer" }} />
-        </a>
-        <a href="https://www.bet365.com/#/HO/" target={"_blank"}>
-          <LanguageIcon style={{ color: "white", cursor: "pointer" }} />
-        </a>
-      </DivIcons>
-      <Div onClick={mainNavigate}>
-        <PowerSettingsNewIcon style={{ cursor: "pointer" }} />
-      </Div>
-    </AsideMenu>
-    <Main>
-      <header>Bem vindo User</header>
-      <div>
-        <div>
-          <span className="trabalheConosco" src={trabalheConosco}>
-            trabalhe conosco
-          </span>
-        </div>
-        <div>
-          <div className="noticiasDireitaDiv">
-            <span className="n1"></span>
-            <span className="n2"></span>
-            <span className="n3"></span>
-          </div>
-        </div>
-      </div>
-            <button
-            onClick={() => {
-              console.log(user)
-            }}
-            >teste</button>
-    </Main>
-  </Container> )
-
-*/
