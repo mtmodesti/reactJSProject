@@ -3,6 +3,8 @@ import { useState } from "react";
 import React from "react";
 import Form from "../form";
 import LostAccountForm from "../lostAccountForm";
+import img from "../../assets/images/loginBG.jpg";
+
 
 const Main = () => {
   const [lostAccount, setLostAccount] = useState(false);
@@ -15,7 +17,8 @@ const Main = () => {
   {lostAccount ? <LostAccountForm setLostAccount={setLostAccount} /> : <Form lostAccount={lostAccount} setLostAccount={setLostAccount}></Form>}
 
       </FormMenu>
-      <ImagemBg></ImagemBg>
+      <ImagemBg>
+      </ImagemBg>
     </Container>
   );
 };

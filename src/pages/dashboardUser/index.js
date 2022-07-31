@@ -8,8 +8,15 @@ import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import LanguageIcon from "@mui/icons-material/Language";
 import trabalheConosco from "../../assets/images/instrucoes.png";
 import "./styles.css";
+import { UserContext } from "../../providers/user/user";
+import { useContext } from "react";
+
+
 
 export const DashboardUser = () => {
+
+const {user} = useContext(UserContext)
+
   const navigate = useNavigate();
 
   const mainNavigate = () => {
@@ -51,18 +58,23 @@ export const DashboardUser = () => {
         <header>Bem vindo User</header>
         <div>
           <div>
-            <span class="trabalheConosco" src={trabalheConosco}>
+            <span className="trabalheConosco" src={trabalheConosco}>
               trabalhe conosco
             </span>
           </div>
           <div>
-            <div class="noticiasDireitaDiv">
-              <span class="n1"></span>
-              <span class="n2"></span>
-              <span class="n3"></span>
+            <div className="noticiasDireitaDiv">
+              <span className="n1"></span>
+              <span className="n2"></span>
+              <span className="n3"></span>
             </div>
           </div>
         </div>
+              <button
+              onClick={() => {
+                console.log(user)
+              }}
+              >teste</button>
       </Main>
     </Container>
   );

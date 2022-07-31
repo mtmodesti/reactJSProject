@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import img from "../../assets/images/login-bg.jpg";
+import img from "../../assets/images/loginBG.jpg";
 
 export const Container = styled.div`
   background-color: #fff;
@@ -12,9 +12,12 @@ export const Container = styled.div`
 
 export const ImagemBg = styled.div`
   background-image: url(${img});
-  background-size: cover;
   width: 65%;
   height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-clip: initial;
+  background-repeat: no-repeat;
 
   @media screen and (max-width: 768px) {
     display: none;
@@ -27,7 +30,6 @@ export const FormMenu = styled.div`
   align-items: center;
   width: 35%;
   height: 100%;
-  background-color: #006936;
 
   span {
     color: #fff;
@@ -35,8 +37,6 @@ export const FormMenu = styled.div`
 
   @media screen and (max-width: 768px) {
     width: 100%;
-    background-image: url(${img});
-    background-size: cover;
 
     form {
       display: flex;
@@ -63,6 +63,5 @@ export const FormMenu = styled.div`
     width: 70%;
     border-radius: 20px;
     justify-content: space-evenly;
-
   }
 `;

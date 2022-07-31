@@ -1,15 +1,14 @@
-import './App.css';
-import Main from './components/main';
-import RoutesApp from './routes'
-
+import "./App.css";
+import Main from "./components/main";
+import RoutesApp from "./routes";
+import { UserProvider } from "./providers/user/user";
 
 function App() {
   return (
-
     <div className="App">
-   
-      <RoutesApp />
-
+      <UserProvider>
+        <RoutesApp />
+      </UserProvider>
     </div>
   );
 }

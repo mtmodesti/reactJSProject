@@ -11,10 +11,8 @@ export const Container = styled.form`
   align-items: center;
   flex-direction: column;
   gap: 15px;
-  background-color: rgba(0, 0, 0, 0.2);
 
   @media screen and (max-width: 768px) {
-    background-color: rgba(0, 0, 0, 0.2);
   }
 
   h3 {
